@@ -54,24 +54,15 @@ public class LinkedList<T> implements List<T>
 	@Override
 	public T get(int index)
 	{
-		return null;
+		if (index >= elements || index < 0)
+			throw new IndexOutOfBoundsException();
+		return getNode(first, index).value;
 	}
 	
 	@Override
 	public int size()
 	{
 		return elements;
-	}
-	
-	private LL recursiveReversal(LL oldStart) {
-		if (oldStart.next == null)
-			return oldStart;  // do nothing, since we're a single-element list
-		else {
-			LL newPrev = oldStart.next;   // this is the second-from last element in the new list
-			LL newStart = recursiveReversal(oldStart.next);  // the newStart will be whatever was previously the last
-			newPrev.next = oldStart;  // make the second-from last point to the last (which was previously the first)
-			return newStart;
-		}
 	}
 	
 	@Override
