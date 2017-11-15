@@ -47,13 +47,13 @@ public class LinkedList<T> implements List<T>
 			if (prev.next == null)
 				last = prev;
 		}
+		--elements;
 	}
 	private LL getNode (LL start, int index) {return (index == 0) ? start : getNode(start.next,index-1);}
 	
 	
 	@Override
-	public T get(int index)
-	{
+	public T get(int index) {
 		if (index >= elements || index < 0)
 			throw new IndexOutOfBoundsException();
 		return getNode(first, index).value;
