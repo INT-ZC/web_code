@@ -22,30 +22,35 @@ public class HashSet<T> implements Set<T> {
 		if (table[bkt] == null)
 			table[bkt] = new LinkedList<>();
 		LinkedList<T> ll = table[bkt];
-		if (!ll.contains(element)) {
+		if (!ll.contains(element))
+		{
 			ll.add(element);
-			elements++;
+			++elements;
 		}
 	}
 	
 	@Override
-	public void remove(T element) {
-		int bkt =  hash(element);
+	public void remove(T element)
+	{
+		int bkt = hash(element);
 		LinkedList<T> ll = table[bkt];
-		if (ll != null && ll.contains(element)) {
+		if (element != null && ll.contains(element))
+		{
 			ll.remove(element);
-			elements--;
+			--elements;
 		}
 	}
 	
 	@Override
-	public boolean contains(T element) {
-		int bkt =  hash(element);
+	public boolean contains(T element)
+	{
+		int bkt = hash(element);
 		LinkedList<T> ll = table[bkt];
-		if (ll != null && ll.contains(element))
+		if (element != null && ll.contains(element))
+		{
 			return true;
-		else
-			return false;
+		}
+		return false;
 	}
 	
 	@Override
@@ -73,7 +78,8 @@ public class HashSet<T> implements Set<T> {
 	
 	/* The following method only exists to allow C05.Complexity to operate */
 	@Override
-	public Set<T> newInstance() {
+	public Set<T> newInstance()
+	{
 		return new HashSet<T>(this.table.length);
 	}
 }
